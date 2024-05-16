@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Roboto, } from "next/font/google";
+import { Roboto, Inter  } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/header";
 import { Toaster } from "@/components/ui/toaster";
 
-const roboto = Roboto({ subsets: ["vietnamese"], weight: ['100', '300', '400', '500'] });
+const inter = Inter({ subsets: [], weight: ['100', '300', '400'] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={roboto.className}>
+      <body className={inter.className}>
         <Toaster/>
         <ThemeProvider
           attribute="class"

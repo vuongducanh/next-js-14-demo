@@ -1,44 +1,43 @@
 import LoginForm from '@/app/(auth)/login/login-form'
 import React from 'react'
 import Image from "next/image";
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Metadata } from 'next';
+import { baseOpenGraph } from '@/app/shared-metadata';
+
+export const metadata: Metadata = {
+  title: {
+    template: '%s | Đăng nhập',
+    default: 'Đăng nhập'
+  },
+  description: 'Đăng nhập',
+  openGraph: baseOpenGraph
+}
+
 
 export default function Login() {
   return (
-    <div className='flex-1 flex flex-col'>
-      <div className='flex-grow'>
-        <div className='container relative min-h-screen flex-col items-center justify-center grid lg:max-w-none lg:grid-cols-2 lg:px-0'>
-          <div className='relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex'>
-            <div className='absolute inset-0 bg-zinc-900'>
-              <Image src='/images/banner-3.avif' sizes='100vw' width={500} height={600} style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                color: "transparent"
-              }} decoding="async" alt="banner" loading="lazy" quality={100} />
-              <div className='absolute inset-0 bg-black bg-opacity-50'></div>
-            </div>
-            <div className='relative z-20 mt-auto'>
-              <blockquote>
-                <p className='text-lg'> Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
-                <footer className='text-sm'>Authrosf suyfihb</footer>
-              </blockquote>
-            </div>
-          </div>
-          <div className='pt-10 lg:p-10 lg:pt-20'>
-            <div className='mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]'>
-              <div className='flex flex-col space-y-2 text-center'>
-                <h1 className='text-xl font-semibold text-center'>Đăng nhập</h1>
-              </div>
-              <div className="grid gap-7">
-                <LoginForm />
-              </div>
-            </div>
+    <div className='mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]'>
+      <div className='flex flex-col space-y-2 text-center'>
+        <h1 className='text-2xl font-semibold tracking-tight'>Đăng nhập</h1>
+      </div>
+      <div className="grid gap-7">
+        <LoginForm />
+        <div className='relative'>
+          <div className='absolute inset-0 flex items-center'><span className='w-full border-t'></span></div>
+          <div className='relative flex justify-center text-xs uppercase'>
+            <span className='bg-background px-2 text-muted-foreground'>Nếu bạn chưa có tài khoản</span>
           </div>
         </div>
+        <Link href={'/register'}>
+          <Button variant={"outline"} className='w-full'>Đăng ký</Button>
+        </Link>
       </div>
+      <p className='px-8 text-center text-sm text-muted-foreground'>
+        Bạn quên mật khẩu? &nbsp;
+        <Link href={'/forgot-password'} className='underline underline-offset-4 hover:text-primary'>Lấy lại mật khẩu</Link>
+      </p>
     </div>
   )
 }

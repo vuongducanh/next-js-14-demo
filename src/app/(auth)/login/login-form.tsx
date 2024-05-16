@@ -14,16 +14,17 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { LoginBody, LoginBodyType } from "@/schemaValidations/auth.schema"
-import envConfig from "@/config"
 import { useRouter } from "next/navigation"
 import authApiRequest from "@/apiRequests/auth"
 import { toast } from "@/components/ui/use-toast"
 import { handleErrorApi } from "@/lib/utils"
 import { useState } from "react"
+import { Eye, EyeOff } from "lucide-react"
 
 const LoginForm = () => {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
+  const [lock, setLock] = useState(true);
 
   const form = useForm<LoginBodyType>({
     resolver: zodResolver(LoginBody),
@@ -61,7 +62,7 @@ const LoginForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className='space-y-2 max-w-[600px] flex-shrink-0 w-full'
+        className='space-y-4'
         noValidate
       >
         <FormField
@@ -71,7 +72,7 @@ const LoginForm = () => {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder='shadcn' type='email' {...field} />
+                <Input placeholder='name@example.com' type='email' {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -83,14 +84,21 @@ const LoginForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Mật khẩu</FormLabel>
-              <FormControl>
-                <Input placeholder='shadcn' type='password' {...field} />
-              </FormControl>
+              <div className="relative">
+                <FormControl>
+                  <Input type={lock ? 'password' : 'text'} {...field} />
+                </FormControl>
+                <div className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 cursor-pointer">
+                  {!lock && <Eye className="h-5 w-5" onClick={() => setLock(!lock)} />}
+                  {lock && <EyeOff className="h-5 w-5" onClick={() => setLock(!lock)} />}
+                </div>
+              </div>
+
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type='submit' className='!mt-8 w-full'>
+        <Button type='submit'>
           Đăng nhập
         </Button>
       </form>
