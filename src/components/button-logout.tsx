@@ -12,7 +12,8 @@ export const ButtonLogout = () => {
   const handleLogout = async () => {
     try {
       await authApiRequest.logoutFromNextClientToNextServer()
-      router.push('/login')
+      router.push('/')
+      router.refresh()
     } catch (error) {
       handleErrorApi({
         error
@@ -20,9 +21,9 @@ export const ButtonLogout = () => {
     }
   }
   return (
-    <Button size={'sm'} onClick={handleLogout}>
-      Logout
-    </Button>
+    <span onClick={handleLogout}>
+      Đăng xuất
+    </span>
   )
 }
 

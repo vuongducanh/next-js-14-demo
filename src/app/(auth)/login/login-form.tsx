@@ -20,11 +20,13 @@ import { toast } from "@/components/ui/use-toast"
 import { handleErrorApi } from "@/lib/utils"
 import { useState } from "react"
 import { Eye, EyeOff } from "lucide-react"
+import { InputLock } from "@/components/ui/input-lock"
+import { useAppContext } from "@/app/app-provider"
 
 const LoginForm = () => {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
-  const [lock, setLock] = useState(true);
+  const { setUser } = useAppContext()
 
   const form = useForm<LoginBodyType>({
     resolver: zodResolver(LoginBody),
@@ -46,6 +48,7 @@ const LoginForm = () => {
         expiresAt: result.payload.data.expiresAt
       })
 
+      setUser(result.payload.data.account)
       router.push('/')
       router.refresh()
     } catch (error) {
@@ -84,16 +87,9 @@ const LoginForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Mật khẩu</FormLabel>
-              <div className="relative">
                 <FormControl>
-                  <Input type={lock ? 'password' : 'text'} {...field} />
+                  <InputLock {...field}/>
                 </FormControl>
-                <div className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 cursor-pointer">
-                  {!lock && <Eye className="h-5 w-5" onClick={() => setLock(!lock)} />}
-                  {lock && <EyeOff className="h-5 w-5" onClick={() => setLock(!lock)} />}
-                </div>
-              </div>
-
               <FormMessage />
             </FormItem>
           )}

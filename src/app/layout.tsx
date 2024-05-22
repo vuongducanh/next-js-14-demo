@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Roboto, Inter  } from "next/font/google";
+import { Roboto, Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/components/header";
 import { Toaster } from "@/components/ui/toaster";
+import AppProvider from "@/app/app-provider";
 
 const inter = Inter({ subsets: [], weight: ['100', '300', '400'] });
 
@@ -20,15 +21,19 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <Toaster/>
+        <Toaster />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <Header/>
-          {children}
+          <AppProvider>
+            <div className="flex-col md:flex min-h-screen">
+              <Header />
+              {children}
+            </div>
+          </AppProvider>
         </ThemeProvider>
       </body>
     </html>

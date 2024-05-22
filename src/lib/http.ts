@@ -128,10 +128,11 @@ const request = async <Response>(
           }
         }
       } else {
-        const sessionToken = (options?.headers as any)?.Authorization.split(
-          'Bearer '
-        )[1]
-        redirect(`/logout?sessionToken=${sessionToken}`)
+        // const sessionToken = (options?.headers as any)?.Authorization.split(
+        //   'Bearer '
+        // )[1]
+        // redirect(`/logout?sessionToken=${sessionToken}`)
+        // redirect(`/login`)
       }
     } else {
       throw new HttpError(data)

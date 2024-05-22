@@ -20,6 +20,7 @@ import { toast } from "@/components/ui/use-toast"
 import { handleErrorApi } from "@/lib/utils"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
+import { InputLock } from "@/components/ui/input-lock"
 
 const RegisterForm = () => {
   const [loading, setLoading] = useState(false)
@@ -98,7 +99,7 @@ const RegisterForm = () => {
             <FormItem>
               <FormLabel>Mật khẩu</FormLabel>
               <FormControl>
-                <Input type='password' {...field} />
+                <InputLock {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -111,7 +112,7 @@ const RegisterForm = () => {
             <FormItem>
               <FormLabel>Nhập lại mật khẩu</FormLabel>
               <FormControl>
-                <Input type='password' {...field} />
+                <InputLock {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
