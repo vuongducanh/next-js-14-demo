@@ -17,3 +17,5 @@ export const InputLock = forwardRef((props: any, ref) => {
     </div>
   );
 });
+
+InputLock.displayName = "Input lock";

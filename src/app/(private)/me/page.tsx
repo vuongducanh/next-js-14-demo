@@ -1,5 +1,5 @@
 import accountApiRequest from '@/apiRequests/account'
-import ProfileForm from '@/app/me/profile-form'
+import ProfileForm from '@/app/(private)/me/profile-form'
 import { cookies } from 'next/headers'
 import type { Metadata } from 'next'
 

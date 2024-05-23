@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Roboto, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import Header from "@/components/header";
 import { Toaster } from "@/components/ui/toaster";
 import AppProvider from "@/app/app-provider";
+import NextTopLoader from 'nextjs-toploader';
 
 const inter = Inter({ subsets: [], weight: ['100', '300', '400'] });
 
@@ -22,6 +22,18 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <Toaster />
+        <NextTopLoader
+          color="#2299DD"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={true}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #2299DD,0 0 5px #2299DD"
+          template='<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"></div>'
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -30,7 +42,6 @@ export default function RootLayout({
         >
           <AppProvider>
             <div className="flex-col md:flex min-h-screen">
-              <Header />
               {children}
             </div>
           </AppProvider>

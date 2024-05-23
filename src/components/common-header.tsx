@@ -69,12 +69,11 @@ export default function CommonHeader(
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuGroup>
-                    <DropdownMenuItem>
-                      <Link href={'/'}>Tài khoản</Link>
+                    <DropdownMenuItem className='p-0'>
+                      <Link href={'/me'} className='w-full py-1.5 px-2'>Tài khoản</Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem>
-                      <Link href={'/'}>Giỏ hàng</Link>
-
+                    <DropdownMenuItem className='p-0'>
+                      <Link href={'/'} className='w-full py-1.5 px-2'>Giỏ hàng</Link>
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
@@ -105,13 +104,12 @@ export default function CommonHeader(
                     <Link href={'/'}>Trang chủ</Link>
                   </DropdownMenuItem>
 
-                  {isLogin && <DropdownMenuItem>
-                    <Link href={'/'}>Tài khoản</Link>
+                  {isLogin && <DropdownMenuItem className='p-0'>
+                    <Link href={'/me'} className='w-full py-1.5 px-2'>Tài khoản</Link>
                   </DropdownMenuItem>}
 
-                  {isLogin && <DropdownMenuItem>
-                    <Link href={'/'}>Giỏ hàng</Link>
-
+                  {isLogin && <DropdownMenuItem className='p-0'>
+                    <Link href={'/'} className='w-full py-1.5 px-2'>Giỏ hàng</Link>
                   </DropdownMenuItem>}
 
                   {!isLogin && <DropdownMenuItem>
