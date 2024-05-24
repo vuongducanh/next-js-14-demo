@@ -16,7 +16,7 @@ export default function Home() {
                   <Link className="absolute inset-0 z-10" href={'/'}></Link>
                   <div className="flex flex-col text-inherit bg-background ">
                     <div className="h-[180px] relative flex bg-secondary">
-                      <Image width={500} height={500} src="https://images.pexels.com/photos/1519753/pexels-photo-1519753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="ảnh bìa khóa học" className="absolute inset-0 w-full h-full object-cover object-center text-transparent" />
+                      <Image layout="fill" src="https://images.pexels.com/photos/1519753/pexels-photo-1519753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="ảnh bìa khóa học" className="absolute inset-0 w-full h-full object-cover object-center text-transparent"  />
                     </div>
                     <div className="p-4 flex flex-col justify-between flex-1">
                       <h3 className="m-0 text-base leading-5 tracking-tighter font-bold">Combo 3 khóa React Next Node</h3>
