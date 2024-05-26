@@ -42,22 +42,22 @@ const start = async () => {
     fastify.register(validatorCompilerPlugin)
     fastify.register(errorHandlerPlugin)
     fastify.register(authRoutes, {
-      prefix: `/${envConfig.PREFIX}/auth`
+      prefix: '/auth'
     })
     fastify.register(accountRoutes, {
-      prefix: `/${envConfig.PREFIX}/account`
+      prefix: '/account'
     })
     fastify.register(mediaRoutes, {
-      prefix: `/${envConfig.PREFIX}/media`
+      prefix: '/media'
     })
     fastify.register(staticRoutes, {
-      prefix: `/${envConfig.PREFIX}/static`
+      prefix: '/static'
     })
     fastify.register(productRoutes, {
-      prefix: `/${envConfig.PREFIX}/products`
+      prefix: '/products'
     })
     fastify.register(testRoutes, {
-      prefix: `/${envConfig.PREFIX}/test`
+      prefix: '/test'
     })
     await fastify.listen({
       port: envConfig.PORT
