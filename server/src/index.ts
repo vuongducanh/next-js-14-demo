@@ -27,7 +27,7 @@ const start = async () => {
     const whitelist = ['*']
     fastify.register(cors, {
       origin: whitelist, // Cho phép tất cả các domain gọi API
-      credentials: true // Cho phép trình duyệt gửi cookie đến server
+      credentials: true, // Cho phép trình duyệt gửi cookie đến server
     })
 
     fastify.register(fastifyAuth, {
@@ -42,22 +42,22 @@ const start = async () => {
     fastify.register(validatorCompilerPlugin)
     fastify.register(errorHandlerPlugin)
     fastify.register(authRoutes, {
-      prefix: '/auth'
+      prefix: `/${envConfig.PREFIX}/auth`
     })
     fastify.register(accountRoutes, {
-      prefix: '/account'
+      prefix: `/${envConfig.PREFIX}/account`
     })
     fastify.register(mediaRoutes, {
-      prefix: '/media'
+      prefix: `/${envConfig.PREFIX}/media`
     })
     fastify.register(staticRoutes, {
-      prefix: '/static'
+      prefix: `/${envConfig.PREFIX}/static`
     })
     fastify.register(productRoutes, {
-      prefix: '/products'
+      prefix: `/${envConfig.PREFIX}/products`
     })
     fastify.register(testRoutes, {
-      prefix: '/test'
+      prefix: `/${envConfig.PREFIX}/test`
     })
     await fastify.listen({
       port: envConfig.PORT

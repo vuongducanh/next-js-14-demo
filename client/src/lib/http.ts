@@ -107,6 +107,8 @@ const request = async <Response>(
           payload: EntityErrorPayload
         }
       )
+
+
     } else if (res.status === AUTHENTICATION_ERROR_STATUS) {
       if (isClient()) {
         if (!clientLogoutRequest) {
@@ -135,7 +137,7 @@ const request = async <Response>(
         // redirect(`/login`)
       }
     } else {
-      throw new HttpError(data)
+      // throw new HttpError(data)
     }
   }
   // Đảm bảo logic dưới đây chỉ chạy ở phía client (browser)
