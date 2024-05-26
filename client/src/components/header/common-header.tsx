@@ -12,7 +12,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu"
-import ButtonLogout from '@/components/button-logout'
+import ButtonLogout from '@/components/header/button-logout'
+import { AvatarName } from '@/components/header/avatar-name'
+import { InfoUserItemDropdownMenu } from '@/components/header/info-user-item-dropdown-menu'
 
 type Props = {
   isLogin: boolean
@@ -53,19 +55,12 @@ export default function CommonHeader(
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className='rounded-full px-4 py-2 h-8 w-8' size="icon">
-                    <span className='relative flex shrink-0 overflow-hidden rounded-full h-8 w-8'>
-                      <span className='flex h-full w-full items-center justify-center rounded-full bg-muted'>
-                        An
-                      </span>
-                    </span>
+                    <AvatarName/>
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-56">
                   <DropdownMenuLabel>
-                    <div className='flex flex-col space-y-1'>
-                      <p className='text-sm font-medium leading-none'>Anh</p>
-                      <p className='text-xs leading-none text-muted-foreground'>anhvd@nal.vn</p>
-                    </div>
+                    <InfoUserItemDropdownMenu/>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuGroup>
@@ -93,10 +88,7 @@ export default function CommonHeader(
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-56">
                 {isLogin && <DropdownMenuLabel>
-                  <div className='flex flex-col space-y-1'>
-                    <p className='text-sm font-medium leading-none'>Anh</p>
-                    <p className='text-xs leading-none text-muted-foreground'>anhvd@nal.vn</p>
-                  </div>
+                  <InfoUserItemDropdownMenu/>
                 </DropdownMenuLabel>}
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>

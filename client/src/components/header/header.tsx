@@ -1,5 +1,5 @@
 import accountApiRequest from '@/apiRequests/account'
-import CommonHeader from '@/components/common-header'
+import CommonHeader from '@/components/header/common-header'
 import { cn } from '@/lib/utils'
 import { cookies } from 'next/headers'
 

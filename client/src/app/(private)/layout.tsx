@@ -1,4 +1,4 @@
-import Header from "@/components/header";
+import Header from "@/components/header/header";
 import React from "react";
 export default async function AuthLayout({
   children
