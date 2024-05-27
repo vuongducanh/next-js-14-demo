@@ -17,6 +17,7 @@ jobs:
 
     strategy:
       matrix:
+        working-directory: ${{ github.workspace }}
         node-version: [18.x, 19.x, 20.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
@@ -28,10 +29,10 @@ jobs:
         cache: 'npm'
     - run: npm ci
 
-    - name: Create env file
-      run: |
-        echo "NEXT_PUBLIC_API_ENDPOINT=${{ secrets.NEXT_PUBLIC_API_ENDPOINT }}" >> .env.production
-      working-directory: ${{ github.workspace }}
+    # - name: Create env file
+    #   run: |
+    #     echo "NEXT_PUBLIC_API_ENDPOINT=${{ secrets.NEXT_PUBLIC_API_ENDPOINT }}" >> .env.production
+    #   working-directory: ${{ github.workspace }}
 
     - name: Print contents of .env.production file
       run: cat .env.production
