@@ -17,8 +17,8 @@ jobs:
 
     strategy:
       matrix:
-        working-directory: ${{ github.workspace }}
         node-version: [18.x, 19.x, 20.x]
+        working-directory: ${{ github.workspace }}
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
