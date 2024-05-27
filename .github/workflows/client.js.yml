@@ -59,6 +59,13 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Create env file
+      run: |
+        echo "NEXT_PUBLIC_API_ENDPOINT=${{ secrets.NEXT_PUBLIC_API_ENDPOINT }}" >> cd client && .env.production
+      working-directory: ${{ github.workspace }}
+
+    - name: Print contents of .env.production file
+      run: cd client && cat .env.production
     - run: cd client && npm ci
     - run: cd client && npm run build --if-present
 
