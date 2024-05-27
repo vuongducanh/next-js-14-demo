@@ -61,7 +61,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Create env file
       run: |
-        echo "NEXT_PUBLIC_API_ENDPOINT=${{ secrets.NEXT_PUBLIC_API_ENDPOINT }}" >> cd client && .env.production
+        echo "NEXT_PUBLIC_API_ENDPOINT=${{ secrets.NEXT_PUBLIC_API_ENDPOINT }}" >> .env.production
       working-directory: ${{ github.workspace }}
 
     - name: Print contents of .env.production file
