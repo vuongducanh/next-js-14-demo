@@ -40,7 +40,7 @@ on:
 jobs:
 
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     strategy:
       matrix:
         node-version: [19.x]
@@ -70,4 +70,8 @@ jobs:
       run: cd server && cat .env.production
     - run: cd server && npm ci
     - run: cd server && npm run build --if-present
+
+    - name: Change Directory
+      run: cd /home/ubuntu/actions-runner/_work/next-js-14-demo/next-js-14-demo/server
+    - run: pm2 reload 1
 
