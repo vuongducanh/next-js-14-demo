@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ../client
+        working-directory: ./client
 
     strategy:
       matrix:
@@ -30,7 +30,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+        working-directory: ./client
     - run: npm ci
+      working-directory: ./client
 
     - name: Create env file
       run: |
@@ -38,5 +40,7 @@ jobs:
       working-directory: ${{ github.workspace }}
 
     - name: Print contents of .env.production file
+      working-directory: ./client
       run: cat .env.production
     - run: npm run build --if-present
+      working-directory: ./client
