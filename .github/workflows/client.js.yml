@@ -34,4 +34,4 @@ jobs:
 
     - name: Change Directory
       run: cd /home/ubuntu/actions-runner/_work/next-js-14-demo/next-js-14-demo/client
-    - run: pm2 reload 1
+    - run: pm2 reload 0
