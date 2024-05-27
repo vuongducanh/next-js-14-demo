@@ -1,30 +1,73 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: Node.js CI server
+# name: Node.js CI server
+
+# on:
+#   push:
+#     branches: [ "main" ]
+#     paths:
+#      - 'server/**'
+
+# jobs:
+#   build:
+
+#     runs-on: ubuntu-latest
+
+#     strategy:
+#       matrix:
+#         node-version: [19.9.0]
+#         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+#     steps:
+#     - uses: actions/checkout@v4
+#     - name: Use Node.js ${{ matrix.node-version }}
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: ${{ matrix.node-version }}
+#         cache: 'npm'
+#     - run: npm ci
+#     - run: npm run build --if-present
+
+name: CI/CD for server
 
 on:
   push:
     branches: [ "main" ]
     paths:
-     - 'server/**'
+      - 'server/**'
 
 jobs:
+
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        node-version: [19.9.0]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node-version: [19.x]
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
+    - uses: actions/checkout@v3
+    - name: Use Node.js
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
+
+    - name: Create .env.production
+      run: |
+        touch .env.production
+        echo "NEXT_PUBLIC_API_ENDPOINT=${{ secrets.NEXT_PUBLIC_API_ENDPOINT }}" >> .env.production
+        echo "PORT=${{ secrets.PORT }}" >> .env.production
+        echo "DOMAIN=${{ secrets.DOMAIN }}" >> .env.production
+        echo "PROTOCOL=${{ secrets.PROTOCOL }}" >> .env.production
+        echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env.production
+        echo "SESSION_TOKEN_SECRET=${{ secrets.SESSION_TOKEN_SECRET }}" >> .env.production
+        echo "SESSION_TOKEN_EXPIRES_IN=${{ secrets.SESSION_TOKEN_EXPIRES_IN }}" >> .env.production
+        echo "COOKIE_MODE=${{ secrets.COOKIE_MODE }}" >> .env.production
+        echo "UPLOAD_FOLDER=${{ secrets.UPLOAD_FOLDER }}" >> .env.production
+      working-directory: ./server
+
+    - name: Print contents of .env.production file
+      run: cd server && cat .env.production
+    - run: cd server && npm ci
+    - run: cd server && npm run build --if-present
+

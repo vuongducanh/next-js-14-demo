@@ -25,7 +25,7 @@ jobs:
       run: |
         touch .env.production
         echo "NEXT_PUBLIC_API_ENDPOINT=${{ secrets.NEXT_PUBLIC_API_ENDPOINT }}" >> .env.production
-      # working-directory: ./client
+      working-directory: ./client
 
     - name: Print contents of .env.production file
       run: cd client && cat .env.production
