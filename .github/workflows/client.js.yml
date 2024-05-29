@@ -9,7 +9,7 @@ on:
 jobs:
 
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [19.x]
@@ -32,6 +32,21 @@ jobs:
     - run: cd client && npm ci
     - run: cd client && npm run build --if-present
 
-    - name: Change Directory
-      run: cd /home/anhvd/actions-runner/_work/next-js-14-demo/next-js-14-demo/client
-    - run: pm2 reload 0
+    - name: Deploy using ssh
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        port: 22
+        script: |
+          cd ~/home/anhvd/next-js-14-demo
+          git pull origin main
+          git status
+          cd client
+          npm install --only=prod
+          pm2 restart client
+
+    # - name: Deploy
+    #   run: cd /home/anhvd/actions-runner/_work/next-js-14-demo/next-js-14-demo/client
+    # - run: pm2 reload 0
