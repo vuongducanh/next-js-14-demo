@@ -37,7 +37,8 @@ jobs:
       with:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USERNAME }}
-        key: ${{ secrets.PRIVATE_KEY }}
+        password: ${{ secrets.SSH_PASSWORD_ANHVD }}
+        # key: ${{ secrets.PRIVATE_KEY }}
         port: 22
         script: |
           cd ~/home/anhvd/next-js-14-demo
