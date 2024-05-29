@@ -41,7 +41,7 @@ jobs:
         # key: ${{ secrets.PRIVATE_KEY }}
         port: 22
         script: |
-          cd ~/home/anhvd/next-js-14-demo
+          cd /home/anhvd/next-js-14-demo
           git pull origin main
           git status
           cd client
