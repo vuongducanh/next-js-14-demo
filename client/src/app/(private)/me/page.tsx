@@ -19,7 +19,7 @@ export default async function MeProfile() {
 
   return (
     <div>
-      <h1 className='text-xl font-semibold text-center'>Profile edit 1111</h1>
+      <h1 className='text-xl font-semibold text-center'>Profile edit</h1>
       <div className="flex justify-center">
         <ProfileForm profile={result.payload.data} />
       </div>

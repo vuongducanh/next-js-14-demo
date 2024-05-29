@@ -45,6 +45,7 @@ jobs:
           git status
           cd client
           npm install --only=prod
+          npm run build
           pm2 restart client
 
     # - name: Deploy
