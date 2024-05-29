@@ -46,7 +46,7 @@ jobs:
           git status
           cd client
           npm install
-          npm run build
+          npm run build --if-present
           pm2 restart client
 
     # - name: Deploy

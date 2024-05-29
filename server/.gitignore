@@ -4,3 +4,6 @@ uploads/
 
 # local env files
 .env*.local
+
+#prisma
+prisma/dev.db
