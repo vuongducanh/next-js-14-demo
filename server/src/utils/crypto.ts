@@ -5,4 +5,4 @@ export const hashPassword = async (password: string) => bcrypt.hash(password, sa
 
 export const comparePassword = async (password: string, hash: string) => bcrypt.compare(password, hash)
 
-// test cicd for server adsf
+// asdfasdf
