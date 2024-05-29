@@ -45,6 +45,8 @@ jobs:
           git pull origin main
           git status
           cd client
+          export NVM_DIR=~/.nvm
+          source ~/.nvm/nvm.sh
           npm install
           npm run build --if-present
           pm2 restart client
