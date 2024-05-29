@@ -3,6 +3,8 @@ name: CI/CD for client
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - 'client/**'
   pull_request:
     branches: [ "main" ]
     paths:
