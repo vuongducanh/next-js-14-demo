@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { NextRequest } from 'next/server'
 
-const privatePaths = ['/me'];
+const privatePaths = ['/me', 'messages'];
 const authPaths = ['/login', '/register']
 
 // This function can be marked `async` if using `await` inside
